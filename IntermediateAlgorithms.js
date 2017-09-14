@@ -17,7 +17,7 @@ function sumAll(arr) {
     var higherNumber = (arr[0] > arr[1]) ? arr[0] : arr[1];
     var sum = 0;
 
-    for (let i = lowerNumber; i < higherNumber; i++) {
+    for (let i = lowerNumber; i <= higherNumber; i++) {
         sum += i;
     }
 
