@@ -40,7 +40,7 @@ describe("Diff Two Arrays", function() {
         expect(diffArray([], []).length).toBe(1);
     });
     it("diffArray([],[]) should return [4]", function() {
-        expect(diffArray([], [])).toBe([]);
+        expect(diffArray([], [])).toBe([4]);
     });
     it("diffArray([],[]) should return an array with two items", function() {
         expect(diffArray([], []).length).toBe(2);
