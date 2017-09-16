@@ -36,16 +36,17 @@ arrays.
 function diffArray(arr1, arr2) {
     var diffElem = [];
 
-    for (let i = 0, len = arr1.length; i < len; i++) {
-        if (!arr2.includes(arr1[i])) {
-            diffElem.push(arr1[i]);
-        }
-    }
-
-    for (let i = 0, len = arr2.length; i < len; i++) {
-        if (!arr1.includes(arr2[i])) {
-            diffElem.push(arr2[i]);
-        }
-    }
+    diffElem = diffElem.concat(compareArray(arr1, arr2));
+    diffElem = diffElem.concat(compareArray(arr2, arr1));
     return diffElem;
+
+    function compareArray(array1, array2) {
+        var differentElements = []
+        for (let i = 0, len = array1.length; i < len; i++) {
+            if (!array2.includes(array1[i])) {
+                differentElements.push(array1[i]);
+            }
+        }
+        return differentElements;
+    }
 }
