@@ -28,27 +28,27 @@ describe("Diff Two Arrays", function() {
         expect(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]).length).toBe(1);
     });
     it('diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]) should return ["pink wool"]', function() {
-        expect(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"])).toBe(["pink wool"]);
+        expect(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"])).toEqual(["pink wool"]);
     });
     it('diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]) should return an array with two items', function() {
         expect(diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]).length).toBe(2);
     });
     it('diffArray(["andesite", "grass", "dirt", "dead shrub"], ["andesite", "grass", "dirt", "dead shrub"]) should return an empty array', function() {
-        expect(diffArray([], [])).toBe([]);
+        expect(diffArray(["andesite", "grass", "dirt", "dead shrub"], ["andesite", "grass", "dirt", "dead shrub"])).toEqual([]);
     });
     it("diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]) should return [4]", function() {
-        expect(diffArray([], [])).toBe([4]);
+        expect(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5])).toEqual([4]);
     });
     it('diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]) should return an array with two items', function() {
         expect(diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]).length).toBe(2);
     });
-    it("diffArray([],[]) should return ['piglet', 4]", function() {
-        expect(diffArray([], [])).toBe(['piglet', 4]);
+    it('diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]) should return ["piglet", 4]', function() {
+        expect(diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4])).toEqual(['piglet', 4]);
     });
     it("diffArray([], ['snuffleupagus', 'cookie monster', 'elmo']) should return an array with three items", function() {
-        expect(diffArray([], []).length).toBe(3);
+        expect(diffArray([], ['snuffleupagus', 'cookie monster', 'elmo']).length).toBe(3);
     });
     it("diffArray([], ['snuffleupagus', 'cookie monster', 'elmo']) should return ['snuffleupagus', 'cookie monster', 'elmo']", function() {
-        expect(diffArray([], [])).toBe(['snuffleupagus', 'cookie monster', 'elmo']);
+        expect(diffArray([], ['snuffleupagus', 'cookie monster', 'elmo'])).toEqual(['snuffleupagus', 'cookie monster', 'elmo']);
     });
 })

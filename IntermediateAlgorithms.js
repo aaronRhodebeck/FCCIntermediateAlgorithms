@@ -33,7 +33,19 @@ given arrays but not both. In other words, return the symmetric difference of th
 arrays.
 */
 
-function diffArray([arr1, arr2]) {
-    var newArr = [];
-    return newArr;
-})
+function diffArray(arr1, arr2) {
+    var diffElem = [];
+
+    for (let i = 0, len = arr1.length; i < len; i++) {
+        if (!arr2.includes(arr1[i])) {
+            diffElem.push(arr1[i]);
+        }
+    }
+
+    for (let i = 0, len = arr2.length; i < len; i++) {
+        if (!arr1.includes(arr2[i])) {
+            diffElem.push(arr2[i]);
+        }
+    }
+    return diffElem;
+}
