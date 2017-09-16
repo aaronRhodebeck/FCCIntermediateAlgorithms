@@ -23,3 +23,30 @@ function sumAll(arr) {
 
     return sum;
 }
+
+/*
+Diff Two Arrays
+---------------
+
+Compare two arrays and return a new array with any items only found in one of the two
+given arrays but not both. In other words, return the symmetric difference of the two 
+arrays.
+*/
+
+function diffArray(arr1, arr2) {
+    var diffElem = [];
+
+    diffElem = diffElem.concat(compareArray(arr1, arr2));
+    diffElem = diffElem.concat(compareArray(arr2, arr1));
+    return diffElem;
+
+    function compareArray(array1, array2) {
+        var differentElements = []
+        for (let i = 0, len = array1.length; i < len; i++) {
+            if (!array2.includes(array1[i])) {
+                differentElements.push(array1[i]);
+            }
+        }
+        return differentElements;
+    }
+}
