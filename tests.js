@@ -52,3 +52,45 @@ describe("Diff Two Arrays", function() {
         expect(diffArray([], ['snuffleupagus', 'cookie monster', 'elmo'])).toEqual(['snuffleupagus', 'cookie monster', 'elmo']);
     });
 })
+
+describe("Check for Palindromes", function() {
+    it('palindrome("eye") should return a boolean', function() {
+        expect(palindrome('eye')).toEqual(jasmine.any(Boolean));
+    });
+    it('palindrome("eye") should return true', function() {
+        expect(palindrome("eye")).toEqual(true);
+    });
+    it('palindrome("_eye") should return true', function() {
+        expect(palindrome('_eye')).toEqual(true);
+    });
+    it('palindrome("race car") should return true', function() {
+        expect(palindrome('race car')).toEqual(true);
+    });
+    it('palindrome("not a palindrome") should return false', function() {
+        expect(palindrome('not a palindrome')).toEqual(false);
+    });
+    it('palindrome("A man, a plan, a canal. Panama") should return true', function() {
+        expect(palindrome("A man, a plan, a canal. Panama")).toEqual(true);
+    });
+    it('palindrome("never odd or even") should return true', function() {
+        expect(palindrome("never odd or even")).toEqual(true);
+    });
+    it('palindrome("nope") should return false', function() {
+        expect(palindrome('nope')).toEqual(false);
+    });
+    it('palindrome("almostomla") should return false', function() {
+        expect(palindrome("almostomla")).toEqual(false);
+    });
+    it('palindrome("My age is 0, 0 si ega ym.") should return true', function() {
+        expect(palindrome("My age is 0, 0 si ega ym.")).toEqual(true);
+    });
+    it('palindrome("1 eye for of 1 eye.") should return false', function() {
+        expect(palindrome('1 eye for of 1 eye.')).toEqual(false);
+    });
+    it('palindrome("0_0 (: /-\ :) 0-0") should return true', function() {
+        expect(palindrome('0_0 (: /-\ :) 0-0')).toEqual(true);
+    });
+    it('palindrome("five|\_/|four") should return false', function() {
+        expect(palindrome("five|\_/|four")).toEqual(false);
+    });
+})
