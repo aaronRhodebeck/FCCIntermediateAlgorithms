@@ -167,3 +167,21 @@ describe("Wherefore Art Thou", function() {
         ).toEqual([]);
     });
 });
+
+describe("Spinal Tap Case", function() {
+    it('spinalCase("This Is Spinal Tap") should return "this-is-spinal-tap"', function() {
+        expect(spinalCase("This Is Spinal Tap")).toEqual("this-is-spinal-tap");
+    });
+    it('spinalCase("thisIsSpinalTap") should return "this-is-spinal-tap"', function() {
+        expect(spinalCase("thisIsSpinalTap")).toEqual("this-is-spinal-tap");
+    });
+    it('spinalCase("The_Andy_Griffith_Show") should return "the-andy-griffith-show"', function() {
+        expect(spinalCase("The_Andy_Griffith_Show")).toEqual("the-andy-griffith-show");
+    });
+    it('spinalCase("Teletubbies say Eh-oh") should return "teletubbies-say-eh-oh"', function() {
+        expect(spinalCase("Teletubbies say Eh-oh")).toEqual("teletubbies-say-eh-oh");
+    });
+    it('spinalCase("AllThe-small Things") should return "all-the-small-things"', function() {
+        expect(spinalCase("AllThe-small Things")).toEqual("all-the-small-things");
+    })
+});
