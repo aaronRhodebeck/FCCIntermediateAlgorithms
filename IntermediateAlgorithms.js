@@ -135,5 +135,13 @@ Spinal Tap Case
  Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
  */
 function spinalCase(str) {
+    var capitalsRemoved = str.replace(/([A-Z])/g, addSpaceBeforeMatch);
+    return capitalsRemoved
+        .trim()
+        .split(/[^a-z0-9]*[^a-z0-9]/g)
+        .join('-');
 
+    function addSpaceBeforeMatch(match) {
+        return " " + match.toLowerCase();
+    }
 }
