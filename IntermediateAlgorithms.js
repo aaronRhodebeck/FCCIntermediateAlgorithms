@@ -62,5 +62,6 @@ and turn everything into the same case (lower or upper case) in order to check f
 */
 
 function palindrome(str) {
-
+    var letterArray = str.toLowerCase().replace(/[^a-z0-9]/g, "").split("");
+    return letterArray.join("") == letterArray.reverse().join("");
 }
