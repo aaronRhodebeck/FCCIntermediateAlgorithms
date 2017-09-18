@@ -145,3 +145,54 @@ function spinalCase(str) {
         return " " + match.toLowerCase();
     }
 }
+
+/*
+Roman Numeral Converter
+-----------------------
+
+ Convert the given number into a roman numeral.
+
+ All roman numerals answers should be provided in upper-case.
+ */
+
+function convertToRoman(num) {
+    var romanNumeralChart = {
+        1: "I",
+        5: "V",
+        10: "X",
+        50: "L",
+        100: "C",
+        500: "D",
+        1000: "M",
+        4: "IV",
+        9: "IX",
+        40: "XL",
+        90: "XC",
+        400: "CD",
+        900: "CM"
+    };
+
+    var romanNumeralEquivalent = buildNumberArray(romanNumeralChart);
+    var romanNumeral = "";
+
+    while (num > 0) {
+        for (let i = 0, len = romanNumeralEquivalent.length; i < len; i++) {
+            if (num - romanNumeralEquivalent[i] >= 0) {
+                console.log(num, romanNumeralEquivalent[i]);
+                romanNumeral += romanNumeralChart[romanNumeralEquivalent[i]];
+                num -= romanNumeralEquivalent[i];
+                i--; // Check if the same number can be used again
+            }
+        }
+    }
+
+    return romanNumeral;
+
+    function buildNumberArray(romanNumeralChart) {
+        let numberArray = [];
+        for (let number in romanNumeralChart) {
+            numberArray.push(parseInt(number));
+        }
+        return numberArray.sort((a, b) => b - a);
+    }
+}
