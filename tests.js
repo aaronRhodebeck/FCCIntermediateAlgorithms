@@ -283,3 +283,30 @@ describe("Ceasar's Cipher", function() {
         );
     });
 });
+
+describe("Pig Latin", function() {
+    it('translatePigLatin("california") should return "aliforniacay"', function() {
+        expect(translatePigLatin("california")).toEqual("aliforniacay");
+    });
+    it('translatePigLatin("paragraphs") should return "aragraphspay"', function() {
+        expect(translatePigLatin("paragraphs")).toEqual("aragraphspay");
+    });
+    it('translatePigLatin("glove") should return "oveglay"', function() {
+        expect(translatePigLatin("glove")).toEqual("oveglay");
+    });
+    it('translatePigLatin("algorithm") should return "algorithmway"', function() {
+        expect(translatePigLatin("algorithm")).toEqual("algorithmway");
+    });
+    it('translatePigLatin("eight") should return "eightway"', function() {
+        expect(translatePigLatin("eight")).toEqual("eightway");
+    });
+    it('should handle words where the first vowel comes in the end of the word', function() {
+        expect(translatePigLatin('thou')).toEqual('outhay');
+        expect(translatePigLatin('banana')).toEqual('ananabay');
+        expect(translatePigLatin('cargo')).toEqual('argocay');
+    });
+    it('should handle words without vowels', function() {
+        expect('dfhkj').toEqual('fhkjday');
+        expect('trnks').toEqual('rnkstay');
+    });
+})
