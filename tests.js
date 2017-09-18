@@ -115,3 +115,55 @@ describe("Seek and Destroy", function() {
         expect(destroyer(["possum", "trollo", 12, "safari", "hotdog", 92, 65, "grandma", "bugati", "trojan", "yacht"], "yacht", "possum", "trollo", "safari", "hotdog", "grandma", "bugati", "trojan")).toEqual([12, 92, 65]);
     })
 })
+
+describe("Wherefore Art Thou", function() {
+    it('whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }) should return [{ first: "Tybalt", last: "Capulet" }]', function() {
+        expect(
+            whatIsInAName(
+                [
+                    { first: "Romeo", last: "Montague" },
+                    { first: "Mercutio", last: null },
+                    { first: "Tybalt", last: "Capulet" }
+                ], { last: "Capulet" }
+            )
+        ).toEqual([{ first: "Tybalt", last: "Capulet" }]);
+    });
+    it('whatIsInAName([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }) should return [{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }]', function() {
+        expect(
+            whatIsInAName([{ apple: 1 }, { apple: 1 }, { apple: 1, bat: 2 }], {
+                apple: 1
+            })
+        ).toEqual([{ apple: 1 }, { apple: 1 }, { apple: 1, bat: 2 }]);
+    });
+    it('whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 }) should return [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }]', function() {
+        expect(
+            whatIsInAName(
+                [{ apple: 1, bat: 2 }, { bat: 2 }, { apple: 1, bat: 2, cookie: 2 }], { apple: 1, bat: 2 }
+            )
+        ).toEqual([{ apple: 1, bat: 2 }, { apple: 1, bat: 2, cookie: 2 }]);
+    });
+    it('whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }) should return [{ "apple": 1, "bat": 2, "cookie": 2 }]', function() {
+        expect(
+            whatIsInAName(
+                [{ apple: 1, bat: 2 }, { apple: 1 }, { apple: 1, bat: 2, cookie: 2 }], { apple: 1, cookie: 2 }
+            )
+        ).toEqual([{ apple: 1, bat: 2, cookie: 2 }]);
+    });
+    it('whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }, { "bat":2 }], { "apple": 1, "bat": 2 }) should return [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie":2 }]', function() {
+        expect(
+            whatIsInAName(
+                [
+                    { apple: 1, bat: 2 },
+                    { apple: 1 },
+                    { apple: 1, bat: 2, cookie: 2 },
+                    { bat: 2 }
+                ], { apple: 1, bat: 2 }
+            )
+        ).toEqual([{ apple: 1, bat: 2 }, { apple: 1, bat: 2, cookie: 2 }]);
+    });
+    it('whatIsInAName([{"a": 1, "b": 2, "c": 3}], {"a": 1, "b": 9999, "c": 3}) should return an empty array', function() {
+        expect(
+            whatIsInAName([{ a: 1, b: 2, c: 3 }], { a: 1, b: 9999, c: 3 })
+        ).toEqual([]);
+    });
+});
