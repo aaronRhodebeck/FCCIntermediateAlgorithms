@@ -266,3 +266,20 @@ describe("Roman Numeral Converter", function() {
         expect(convertToRoman(3999)).toEqual("MMMCMXCIX");
     });
 })
+
+describe("Ceasar's Cipher", function() {
+    it('rot13("SERR PBQR PNZC") should decode to FREE CODE CAMP', function() {
+        expect(rot13("SERR PBQR PNZC")).toEqual("FREE CODE CAMP");
+    });
+    it('rot13("SERR CVMMN!") should decode to FREE PIZZA!', function() {
+        expect(rot13("SERR CVMMN!")).toEqual("FREE PIZZA!");
+    });
+    it('rot13("SERR YBIR?") should decode to FREE LOVE?', function() {
+        expect(rot13("SERR YBIR?")).toEqual("FREE LOVE?");
+    });
+    it('rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT.") should decode to THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.', function() {
+        expect(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT.")).toEqual(
+            "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG."
+        );
+    });
+});

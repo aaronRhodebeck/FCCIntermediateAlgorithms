@@ -178,7 +178,6 @@ function convertToRoman(num) {
     while (num > 0) {
         for (let i = 0, len = romanNumeralEquivalent.length; i < len; i++) {
             if (num - romanNumeralEquivalent[i] >= 0) {
-                console.log(num, romanNumeralEquivalent[i]);
                 romanNumeral += romanNumeralChart[romanNumeralEquivalent[i]];
                 num -= romanNumeralEquivalent[i];
                 i--; // Check if the same number can be used again
@@ -194,5 +193,45 @@ function convertToRoman(num) {
             numberArray.push(parseInt(number));
         }
         return numberArray.sort((a, b) => b - a);
+    }
+}
+
+/*
+Caeser's Cipher
+---------------
+ One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift 
+ cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
+
+ A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 
+ places. Thus 'A' ↔ 'N', 'B' ↔ 'O' and so on.
+
+ Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+ All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces,
+ punctuation), but do pass them on. */
+function rot13(str) {
+    var transformedCharCodes = [];
+
+    for (let i = 0, len = str.length; i < len; i++) {
+        // If character code is in the range of capital letters
+        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 91) {
+            // Shift the character code, using % to wrap to beginning 
+            // if out of range
+            transformedCharCodes.push((shiftCapitalLetterBy13(str.charCodeAt(i))));
+        } else {
+            transformedCharCodes.push(str.charCodeAt(i));
+        }
+    }
+
+    return String.fromCharCode(...transformedCharCodes);
+
+    function shiftCapitalLetterBy13(charCode) {
+        // Change the character codes to start from zero
+        let newCharCode = charCode - 65;
+        // Add the 13 for the shift, then subtract total letters in alphabet
+        // if past Z to start at beginning
+        newCharCode = (newCharCode + 13) % 26;
+        // Return the shifted character code, and move it back to the proper spot in unicode
+        return newCharCode + 65
     }
 }
