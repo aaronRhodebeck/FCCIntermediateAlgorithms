@@ -250,5 +250,41 @@ Pig Latin
  Input strings are guaranteed to be English words in all lowercase.
  */
 function translatePigLatin(str) {
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
 
+    if (vowels.includes(str[0])) {
+        return str + "way";
+    } else if (wordIncludesVowel(str)) {
+        let consonantCluster = findConsonantCluster(str);
+        return removeFrom(str, consonantCluster) + consonantCluster + "ay";
+    } else {
+        return str.slice(1) + str[0] + "ay";
+    }
+
+    return "Error in translator"
+
+    function wordIncludesVowel(str) {
+        for (let i = 0, len = str.length; i < len; i++) {
+            if (vowels.includes(str[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function findConsonantCluster(str) {
+        let consonantCluster = "";
+        for (let i = 0, len = str.length; i < len; i++) {
+            if (!vowels.includes(str[i])) {
+                consonantCluster += str[i];
+            } else {
+                return consonantCluster;
+            };
+        }
+    };
+
+    function removeFrom(str, consonantCluster) {
+        let regex = new RegExp(consonantCluster);
+        return str.replace(regex, "");
+    }
 }
