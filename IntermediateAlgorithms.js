@@ -65,3 +65,28 @@ function palindrome(str) {
     var letterArray = str.toLowerCase().replace(/[^a-z0-9]/g, "").split("");
     return letterArray.join("") == letterArray.reverse().join("");
 }
+
+/*
+Seek and Destroy
+----------------
+
+You will be provided with an initial array (the first argument in the destroyer function), 
+followed by one or more arguments. Remove all elements from the initial array that are of 
+the same value as these arguments.
+
+*Note*
+You have to use the arguments object.
+*/
+
+function destroyer(arr) {
+    var args = [...arguments];
+    var array = args.shift();
+
+    for (let i = array.length - 1; i > -1; i--) {
+        if (args.includes(array[i])) {
+            array.splice(i, 1);
+        }
+    }
+
+    return array;
+}
