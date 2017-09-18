@@ -306,8 +306,8 @@ describe("Pig Latin", function() {
         expect(translatePigLatin('cargo')).toEqual('argocay');
     });
     it('should handle words without vowels', function() {
-        expect(translatePigLatin('dfhkj')).toEqual('fhkjday');
-        expect(translatePigLatin('trnks')).toEqual('rnkstay');
+        expect(translatePigLatin('dfhkj')).toEqual('dfhkjay');
+        expect(translatePigLatin('trnks')).toEqual('trnksay');
     });
 })
 
