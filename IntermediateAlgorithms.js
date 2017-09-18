@@ -178,7 +178,6 @@ function convertToRoman(num) {
     while (num > 0) {
         for (let i = 0, len = romanNumeralEquivalent.length; i < len; i++) {
             if (num - romanNumeralEquivalent[i] >= 0) {
-                console.log(num, romanNumeralEquivalent[i]);
                 romanNumeral += romanNumeralChart[romanNumeralEquivalent[i]];
                 num -= romanNumeralEquivalent[i];
                 i--; // Check if the same number can be used again
@@ -210,6 +209,29 @@ Caeser's Cipher
 
  All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces,
  punctuation), but do pass them on. */
-function rot13() {
+function rot13(str) {
+    var transformedCharCodes = [];
 
+    for (let i = 0, len = str.length; i < len; i++) {
+        // If character code is in the range of capital letters
+        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 91) {
+            // Shift the character code, using % to wrap to beginning 
+            // if out of range
+            transformedCharCodes.push((shiftCapitalLetterBy13(str.charCodeAt(i))));
+        } else {
+            transformedCharCodes.push(str.charCodeAt(i));
+        }
+    }
+
+    return String.fromCharCode(...transformedCharCodes);
+
+    function shiftCapitalLetterBy13(charCode) {
+        // Change the character codes to start from zero
+        let newCharCode = charCode - 65;
+        // Add the 13 for the shift, then subtract total letters in alphabet
+        // if past Z to start at beginning
+        newCharCode = (newCharCode + 13) % 26;
+        // Return the shifted character code, and move it back to the proper spot in unicode
+        return newCharCode + 65
+    }
 }
