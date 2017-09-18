@@ -258,7 +258,7 @@ function translatePigLatin(str) {
         let consonantCluster = findConsonantCluster(str);
         return removeFrom(str, consonantCluster) + consonantCluster + "ay";
     } else {
-        return str.slice(1) + str[0] + "ay";
+        return str + "ay";
     }
 
     return "Error in translator"
