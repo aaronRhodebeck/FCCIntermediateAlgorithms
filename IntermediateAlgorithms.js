@@ -79,5 +79,14 @@ You have to use the arguments object.
 */
 
 function destroyer(arr) {
+    var args = [...arguments];
+    var array = args.shift();
 
+    for (let i = array.length - 1; i > -1; i--) {
+        if (args.includes(array[i])) {
+            array.splice(i, 1);
+        }
+    }
+
+    return array;
 }
