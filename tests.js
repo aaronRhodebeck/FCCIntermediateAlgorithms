@@ -188,7 +188,7 @@ describe("Spinal Tap Case", function() {
 
 describe("Roman Numeral Converter", function() {
     it('convertToRoman(2) should return "II"', function() {
-        expect(convertToRoman(2).toEqual("II"));
+        expect(convertToRoman(2)).toEqual("II");
     });
     it('convertToRoman(3) should return "III"', function() {
         expect(convertToRoman(3)).toEqual("III");
