@@ -82,6 +82,8 @@ function destroyer(arr) {
     var args = [...arguments];
     var array = args.shift();
 
+    // Must reverse loop, otherwise the index changes
+    // when the array is modified
     for (let i = array.length - 1; i > -1; i--) {
         if (args.includes(array[i])) {
             array.splice(i, 1);
@@ -105,6 +107,23 @@ Wherefore art thou
  then you must return the third object from the array (the first argument), because it contains 
  the name and its value, that was passed on as the second argument.
  */
-function whatIsinAName(collection, source) {
+function whatIsInAName(collection, source) {
+    var matchingObjects = [];
 
+    for (let i = 0, len = collection.length; i < len; i++) {
+        if (objectsHaveMatchingKeys(collection[i], source)) {
+            matchingObjects.push(collection[i]);
+        }
+    }
+
+    return matchingObjects;
+
+    function objectsHaveMatchingKeys(obj1, obj2) {
+        for (let key in obj2) {
+            if (obj2[key] !== obj1[key]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
