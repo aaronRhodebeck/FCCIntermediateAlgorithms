@@ -308,5 +308,18 @@ Perform a search and replace on the sentence using the arguments provided and re
   replaced as "Dog"
   */
 function myReplace(str, before, after) {
+    let regex = new RegExp(before, "ig");
+    return str.replace(regex, matchCapitalization);
 
+    function matchCapitalization(match) {
+        if (isLowerCase(match[0])) {
+            return after[0].toLowerCase() + after.slice(1);
+        } else {
+            return after[0].toUpperCase() + after.slice(1);
+        }
+    }
+
+    function isLowerCase(letter) {
+        return letter.toLowerCase() === letter;
+    }
 }
