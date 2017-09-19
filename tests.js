@@ -414,4 +414,25 @@ describe("Convert HTML Entities", function() {
     it(`convertHTML("abc") should return abc`, function() {
         expect(convertHTML("abc")).toEqual('abc');
     });
+});
+
+describe("Sum All Odd Fibonacci Numbers", function() {
+    it('sumFibs(1) should return a number', function() {
+        expect(sumFibs(1)).toEqual(jasmine.any(Number));
+    });
+    it('sumFibs(1000) should return 1785', function() {
+        expect(sumFibs(1000)).toEqual(1785);
+    });
+    it('sumFibs(4000000) should return 4613732', function() {
+        expect(sumFibs(4000000)).toEqual(4613732);
+    });
+    it('sumFibs(4) should return 5', function() {
+        expect(sumFibs(4)).toEqual(5);
+    });
+    it('sumFibs(75024) should return 60696', function() {
+        expect(sumFibs(75024)).toEqual(60696);
+    });
+    it('sumFibs(75025) should return 135721', function() {
+        expect(sumFibs(75025)).toEqual(135721);
+    });
 })
