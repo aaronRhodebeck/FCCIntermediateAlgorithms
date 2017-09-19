@@ -421,5 +421,17 @@ Convert HTML Entities
  Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string
  to their corresponding HTML entities. */
 function convertHTML(str) {
+    return str.replace(/[\&\<\>\"\']/g, convertToHTMLEquivalent);
 
+    function convertToHTMLEquivalent(char) {
+        console.log("called")
+        var htmlConversion = {
+            "&": "&amp;",
+            ">": "&gt;",
+            "<": "&lt;",
+            '"': "&quot;",
+            "'": "&apos;",
+        }
+        return htmlConversion[char];
+    }
 }
