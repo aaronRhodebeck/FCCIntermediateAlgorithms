@@ -361,3 +361,27 @@ function pairElement(str) {
         return [elem, elementPairs[elem]];
     }
 }
+
+/*
+Missing Letters
+---------------
+
+ Find the missing letter in the passed letter range and return it.
+ If all letters are present in the range, return undefined. */
+function fearNotLetter(str) {
+    for (let i = 0, len = str.length; i < len - 1; i++) {
+        var thisLetterCode = str.charCodeAt(i);
+        var nextLetterCode = str.charCodeAt(i + 1);
+        if (
+            nextLetterCode !== thisLetterCode + 1 &&
+            isInLetterRange(thisLetterCode + 1)
+        ) {
+            return String.fromCharCode(str.charCodeAt(i) + 1);
+        }
+    }
+    return undefined;
+
+    function isInLetterRange(charCode) {
+        return charCode >= 97 && charCode <= 122;
+    }
+}

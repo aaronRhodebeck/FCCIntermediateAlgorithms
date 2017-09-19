@@ -358,3 +358,18 @@ describe("DNA Pairing", function() {
         ]);
     });
 })
+
+describe("Missing Letters", function() {
+    it('fearNotLetter("abce") should return "d"', function() {
+        expect(fearNotLetter("abce")).toEqual("d");
+    });
+    it('fearNotLetter("stvwx") should return "u"', function() {
+        expect(fearNotLetter("stvwx")).toEqual("u");
+    });
+    it('fearNotLetter("bcdf") should return "e"', function() {
+        expect(fearNotLetter("bcdf")).toEqual("e");
+    });
+    it('fearNotLetter("abcdefghijklmnopqrstuvwxyz") should return undefined', function() {
+        expect(fearNotLetter("abcdefghijklmnopqrstuvwxyz")).toEqual(undefined);
+    });
+})
