@@ -370,6 +370,6 @@ describe("Missing Letters", function() {
         expect(fearNotLetter("bcdf")).toEqual("e");
     });
     it('fearNotLetter("abcdefghijklmnopqrstuvwxyz") should return undefined', function() {
-        expect(fearNotLetter("abcdefghijklmnopqrstuvwxyz")).toEqual(jasmine.any(undefined));
+        expect(fearNotLetter("abcdefghijklmnopqrstuvwxyz")).toEqual(undefined);
     });
 })
