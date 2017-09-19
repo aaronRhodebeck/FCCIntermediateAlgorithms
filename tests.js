@@ -390,3 +390,27 @@ describe("Sorted Union", function() {
         expect(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8])).toEqual([1, 2, 3, 5, 4, 6, 7, 8]);
     });
 })
+
+describe("Convert HTML Entities", function() {
+    it('convertHTML("Dolce & Gabbana") should return Dolce &​amp; Gabbana', function() {
+        expect(convertHTML("Dolce & Gabbana")).toEqual("Dolce &​amp; Gabbana");
+    });
+    it('convertHTML("Hamburgers < Pizza < Tacos") should return Hamburgers &​lt; Pizza &​lt; Tacos', function() {
+        expect(convertHTML("Hamburgers < Pizza < Tacos")).toEqual("Hamburgers &​lt; Pizza &​lt; Tacos");
+    });
+    it('convertHTML("Sixty > twelve") should return Sixty &​gt; twelve', function() {
+        expect(convertHTML("Sixty > twelve")).toEqual("Sixty &​gt; twelve");
+    });
+    it(`convertHTML('Stuff in "quotation marks"') should return Stuff in &​quot;quotation marks&​quot;`, function() {
+        expect(convertHTML('Stuff in "quotation marks"')).toEqual('Stuff in &​quot;quotation marks&​quot;');
+    });
+    it(`convertHTML("Schindler's List") should return Schindler&​apos;s List`, function() {
+        expect(convertHTML("Schindler's List")).toEqual('Schindler&​apos;s List');
+    });
+    it(`convertHTML("<>") should return &​lt;&​gt;`, function() {
+        expect(convertHTML("<>")).toEqual('&​lt;&​gt;');
+    });
+    it(`convertHTML("abc") should return abc`, function() {
+        expect(convertHTML("abc")).toEqual('abc');
+    });
+})
