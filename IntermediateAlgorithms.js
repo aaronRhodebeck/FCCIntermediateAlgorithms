@@ -341,5 +341,23 @@ DNA Pairing
  The character and its pair are paired up in an array, and all the arrays are grouped into
  one encapsulating array. */
 function pairElement(str) {
+    var elemsToPair = str.split("");
+    var pairedElems = [];
 
+    for (let i = 0, len = elemsToPair.length; i < len; i++) {
+        pairedElems.push(pairElement(elemsToPair[i]));
+    }
+
+    return pairedElems;
+
+    function pairElement(elem) {
+        let elementPairs = {
+            "A": "T",
+            "T": "A",
+            "C": "G",
+            "G": "C",
+        }
+
+        return [elem, elementPairs[elem]];
+    }
 }
