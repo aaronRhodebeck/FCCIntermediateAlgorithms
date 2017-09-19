@@ -436,3 +436,15 @@ describe("Sum All Odd Fibonacci Numbers", function() {
         expect(sumFibs(75025)).toEqual(135721);
     });
 })
+
+describe("Sum All Primes", function() {
+    it('sumPrimes(10) should return a number', function() {
+        expect(sumPrimes(10)).toEqual(jasmine.any(Number));
+    });
+    it('sumPrimes(10) should return 17', function() {
+        expect(sumPrimes(10)).toEqual(17);
+    });
+    it('sumPrimes(977) should return 73156', function() {
+        expect(sumPrimes(977)).toEqual(73156);
+    });
+})
