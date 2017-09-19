@@ -478,5 +478,28 @@ Sum All Primes
 
  The provided number may not be a prime. */
 function sumPrimes(num) {
+    var primeNumbers = findPrimesTo(num);
+    return primeNumbers.reduce((a, b) => a + b);
 
+    function findPrimesTo(upperLimit) {
+        var allPossiblePrimes = [];
+        for (let i = 2, len = upperLimit; i < len; i++) {
+            allPossiblePrimes.push(i);
+        }
+        return sieveOfEratosthenes(allPossiblePrimes);
+
+        function sieveOfEratosthenes(numArray) {
+            var primes = [1]
+            for (let i = 0; i < numArray.length; i++) {
+                for (let j = numArray.length - 1; j > i; j--) {
+                    if (numArray[j] % i === 0) {
+                        numArray.splice(j, 1)
+                    }
+                }
+                primes.push(numArray[i]);
+            }
+            console.log(primes);
+            return primes;
+        }
+    }
 }
