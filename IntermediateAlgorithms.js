@@ -399,5 +399,17 @@ Sorted Union
  The unique numbers should be sorted by their original order, but the final array
  should not be sorted in numerical order. */
 function uniteUnique(arr) {
+    var args = [...arguments];
+    var uniqueElements = [];
+    args.forEach(compareArrayElements);
 
+    return uniqueElements;
+
+    function compareArrayElements(array) {
+        array.forEach((item) => {
+            if (!uniqueElements.includes(item)) {
+                uniqueElements.push(item);
+            }
+        });
+    }
 }
