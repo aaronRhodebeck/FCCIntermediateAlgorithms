@@ -523,5 +523,84 @@ Smallest Common Multiple
  that is also evenly divisible by all numbers between 1 and 3. The answer here would 
  be 6. */
 function smallestCommons(arr) {
+    arr = arr.sort((a, b) => a - b);
+    var allNumbers = getAllNumbersBetween(arr[0], arr[1]);
+    var sortedPrimeNumbers = findPrimesTo(arr[1]).sort((a, b) => b - a);
+    var greatestPrimeFactors = findGreatestPrimeFactors(allNumbers, sortedPrimeNumbers);
+    var lowestCommonMultiple = multiplyPrimeFactors(greatestPrimeFactors);
+    return lowestCommonMultiple;
 
+    function getAllNumbersBetween(a, b) {
+        var numberList = []
+        for (let i = arr[0]; i <= arr[1]; i++) {
+            numberList.push(i);
+        }
+        return numberList;
+    }
+
+    function findPrimesTo(upperLimit) {
+        var numList = getNumArrayTo(upperLimit);
+        for (let i = 0; i < upperLimit / 2; i++) {
+            numList = removeMultiples(numList, numList[i]);
+        }
+        return numList;
+
+        function getNumArrayTo(maxNumber) {
+            var numArray = [];
+            for (let i = 2; i <= maxNumber; i++) {
+                numArray.push(i);
+            }
+            return numArray;
+        }
+
+        function removeMultiples(numberList, number) {
+            var nonMultiples = numberList.slice(0, number);
+            for (let i = numberList.indexOf(number) + 1, len = numberList.length; i < len; i++) {
+                if (numberList[i] % number !== 0 && !nonMultiples.includes(numberList[i])) {
+                    nonMultiples.push(numberList[i]);
+                }
+            }
+            return nonMultiples;
+        }
+    }
+
+    function findGreatestPrimeFactors(numberArray, sortedPrimeNumberList) {
+        var greatestPrimeFactors = {};
+        for (let i = 0, len = numberArray.length; i < len; i++) {
+            var primeFactors = findPrimeFactorsOf(numberArray[i], sortedPrimeNumbers);
+            for (let factor in primeFactors) {
+                if (!greatestPrimeFactors.hasOwnProperty(factor)) {
+                    greatestPrimeFactors[factor] = primeFactors[factor];
+                } else if (primeFactors[factor] > greatestPrimeFactors[factor]) {
+                    greatestPrimeFactors[factor] = primeFactors[factor];
+                }
+            }
+        }
+        return greatestPrimeFactors
+    }
+
+    function findPrimeFactorsOf(number, sortedPrimeNumberList) {
+        var numbersPrimeFactors = {};
+        for (let i = 0, len = sortedPrimeNumberList.length; i < len; i++) {
+            if (number % sortedPrimeNumberList[i] === 0) {
+                let key = sortedPrimeNumberList[i].toString();
+                if (numbersPrimeFactors.hasOwnProperty(key)) {
+                    numbersPrimeFactors[key]++;
+                } else {
+                    numbersPrimeFactors[key] = 1
+                }
+                number /= sortedPrimeNumberList[i];
+                i--
+            }
+        }
+        return numbersPrimeFactors;
+    }
+
+    function multiplyPrimeFactors(totalPrimeFactors) {
+        var total = 1;
+        for (factor in totalPrimeFactors) {
+            total *= Math.pow(factor, totalPrimeFactors[factor]);
+        }
+        return total;
+    }
 }
