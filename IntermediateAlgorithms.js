@@ -465,3 +465,45 @@ function sumFibs(num) {
         return (number % 2 !== 0) ? currentTotal + number : currentTotal;
     }
 }
+
+/*
+Sum All Primes
+--------------
+
+ Sum all the prime numbers up to and including the provided number.
+
+ A prime number is defined as a number greater than one and having only two divisors,
+ one and itself. For example, 2 is a prime number because it's only divisible by one 
+ and two.
+
+ The provided number may not be a prime. */
+function sumPrimes(num) {
+    var primeNumbers = findPrimesTo(num);
+    return primeNumbers.reduce((a, b) => a + b);
+
+    function findPrimesTo(upperLimit) {
+        var numList = getNumArrayTo(upperLimit);
+        for (let i = 0; i < upperLimit / 2; i++) {
+            numList = removeMultiples(numList, numList[i]);
+        }
+        return numList;
+
+        function getNumArrayTo(maxNumber) {
+            var numArray = [];
+            for (let i = 2; i <= maxNumber; i++) {
+                numArray.push(i);
+            }
+            return numArray;
+        }
+
+        function removeMultiples(numberList, number) {
+            var nonMultiples = numberList.slice(0, number);
+            for (let i = numberList.indexOf(number) + 1, len = numberList.length; i < len; i++) {
+                if (numberList[i] % number !== 0 && !nonMultiples.includes(numberList[i])) {
+                    nonMultiples.push(numberList[i]);
+                }
+            }
+            return nonMultiples;
+        }
+    }
+}
