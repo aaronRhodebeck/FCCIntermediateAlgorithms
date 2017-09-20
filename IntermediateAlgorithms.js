@@ -598,7 +598,7 @@ function smallestCommons(arr) {
 
     function multiplyPrimeFactors(totalPrimeFactors) {
         var total = 1;
-        for (factor in totalPrimeFactors) {
+        for (let factor in totalPrimeFactors) {
             total *= Math.pow(factor, totalPrimeFactors[factor]);
         }
         return total;
