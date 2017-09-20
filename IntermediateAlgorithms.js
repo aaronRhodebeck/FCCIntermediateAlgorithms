@@ -482,24 +482,28 @@ function sumPrimes(num) {
     return primeNumbers.reduce((a, b) => a + b);
 
     function findPrimesTo(upperLimit) {
-        var allPossiblePrimes = [];
-        for (let i = 2, len = upperLimit; i < len; i++) {
-            allPossiblePrimes.push(i);
+        var numList = getNumArrayTo(upperLimit);
+        for (let i = 0; i < upperLimit / 2; i++) {
+            numList = removeMultiples(numList, numList[i]);
         }
-        return sieveOfEratosthenes(allPossiblePrimes);
+        return numList;
 
-        function sieveOfEratosthenes(numArray) {
-            var primes = [1]
-            for (let i = 0; i < numArray.length; i++) {
-                for (let j = numArray.length - 1; j > i; j--) {
-                    if (numArray[j] % i === 0) {
-                        numArray.splice(j, 1)
-                    }
-                }
-                primes.push(numArray[i]);
+        function getNumArrayTo(maxNumber) {
+            var numArray = [];
+            for (let i = 2; i <= maxNumber; i++) {
+                numArray.push(i);
             }
-            console.log(primes);
-            return primes;
+            return numArray;
+        }
+
+        function removeMultiples(numberList, number) {
+            var nonMultiples = numberList.slice(0, number);
+            for (let i = numberList.indexOf(number) + 1, len = numberList.length; i < len; i++) {
+                if (numberList[i] % number !== 0 && !nonMultiples.includes(numberList[i])) {
+                    nonMultiples.push(numberList[i]);
+                }
+            }
+            return nonMultiples;
         }
     }
 }
