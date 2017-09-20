@@ -448,3 +448,24 @@ describe("Sum All Primes", function() {
         expect(sumPrimes(977)).toEqual(73156);
     });
 })
+
+describe("Smallest Common Multiple", function() {
+    it('smallestCommons([1, 5]) should return a number', function() {
+        expect(smallestCommons([1, 5])).toEqual(jasmine.any(Number));
+    });
+    it('smallestCommons([1, 5]) should return 60', function() {
+        expect(smallestCommons([1, 5])).toEqual(60);
+    });
+    it('smallestCommons([5, 1]) should return 60', function() {
+        expect(smallestCommons([5, 1])).toEqual(60);
+    });
+    it('smallestCommons([2, 10]) should return 2520', function() {
+        expect(smallestCommons([2, 10])).toEqual(2520);
+    });
+    it('smallestCommons([1, 13]) should return 360360', function() {
+        expect(smallestCommons([1, 13])).toEqual(360360);
+    });
+    it('smallestCommons([23, 18]) should return 6056820', function() {
+        expect(smallestCommons([23, 18])).toEqual(6056820);
+    });
+})
