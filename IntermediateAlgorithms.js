@@ -761,6 +761,20 @@ Map the Debris
 
  The radius of the earth is 6367.4447 kilometers, and the GM value of earth is
  398600.4418 km3s-2. */
-function obitalPeriod(arr) {
+function orbitalPeriod(arr) {
+    const gmOfEarth = 398600.4418;
+    const radiusOfEarth = 6367.4447;
 
+    var orbitalPeriodArray = [];
+    for (let i = 0, len = arr.length; i < len; i++) {
+        arr[i].orbitalPeriod = findOrbitalPeriod(arr[i].avgAlt);
+        delete arr[i].avgAlt;
+        orbitalPeriodArray.push(arr[i]);
+    }
+    return orbitalPeriodArray;
+
+    function findOrbitalPeriod(averageAltitude) {
+        var radiusOfOrbit = averageAltitude + radiusOfEarth;
+        return Math.round(2 * Math.PI * Math.sqrt(Math.pow(radiusOfOrbit, 3) / gmOfEarth));
+    }
 }
