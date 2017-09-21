@@ -640,3 +640,29 @@ function steamrollArray(arr) {
         return accumulator;
     }
 }
+
+/*
+Binary Agents
+-------------
+
+ Return an English translated sentence of the passed binary string.
+
+ The binary string will be space separated. */
+function binaryAgent(str) {
+    var chars = str.split(" ");
+
+    var charCodes = [];
+    for (let i = 0, len = chars.length; i < len; i++) {
+        charCodes.push(convertBinaryToInt(chars[i]));
+    }
+
+    var decodedString = "";
+    for (let i = 0, len = charCodes.length; i < len; i++) {
+        decodedString += String.fromCharCode(charCodes[i]);
+    }
+    return decodedString;
+
+    function convertBinaryToInt(binary) {
+        return parseInt(binary, 2);
+    }
+}
