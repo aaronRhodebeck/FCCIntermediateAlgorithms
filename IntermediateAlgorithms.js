@@ -627,5 +627,16 @@ Steamroller
 
  Flatten a nested array. You must account for varying levels of nesting. */
 function steamrollArray(arr) {
+    return unNestElements(arr, []);
 
+    function unNestElements(array, accumulator) {
+        for (let i = 0, len = array.length; i < len; i++) {
+            if (Array.isArray(array[i])) {
+                unNestElements(array[i], accumulator);
+            } else {
+                accumulator.push(array[i]);
+            }
+        }
+        return accumulator;
+    }
 }
