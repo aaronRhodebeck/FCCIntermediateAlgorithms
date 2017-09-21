@@ -533,3 +533,33 @@ describe("Binary Agent", function() {
         expect(binaryAgent("01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001")).toEqual("I love FreeCodeCamp!");
     });
 })
+
+describe("Everything Be True", function() {
+    it('truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex") should return true', function() {
+        expect(truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy", "sex": "male" }, { "user": "Laa-Laa", "sex": "female" }, { "user": "Po", "sex": "female" }], "sex")).toEqual(true);
+    });
+    it('truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex") should return false', function() {
+        expect(truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy" }, { "user": "Laa-Laa", "sex": "female" }, { "user": "Po", "sex": "female" }], "sex")).toEqual(false);
+    });
+    it('truthCheck([{"user": "Tinky-Winky", "sex": "male", "age": 0}, {"user": "Dipsy", "sex": "male", "age": 3}, {"user": "Laa-Laa", "sex": "female", "age": 5}, {"user": "Po", "sex": "female", "age": 4}], "age") should return false', function() {
+        expect(truthCheck([{ "user": "Tinky-Winky", "sex": "male", "age": 0 }, { "user": "Dipsy", "sex": "male", "age": 3 }, { "user": "Laa-Laa", "sex": "female", "age": 5 }, { "user": "Po", "sex": "female", "age": 4 }], "age")), toEqual(false);
+    });
+    it('truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true}, {"name": "FastFoward", "onBoat": null}], "onBoat") should return false', function() {
+        expect(truthCheck([{ "name": "Pete", "onBoat": true }, { "name": "Repeat", "onBoat": true }, { "name": "FastFoward", "onBoat": null }], "onBoat")).toEqual(false);
+    });
+    it('truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true, "alias": "Repete"}, {"name": "FastFoward", "onBoat": true}], "onBoat") should return true', function() {
+        expect(truthCheck([{ "name": "Pete", "onBoat": true }, { "name": "Repeat", "onBoat": true, "alias": "Repete" }, { "name": "FastFoward", "onBoat": true }], "onBoat")).toEqual(true);
+    });
+    it('truthCheck([{"single": "yes"}], "single") should return true', function() {
+        expect(truthCheck([{ "single": "yes" }], "single")).toEqual(true);
+    });
+    it('truthCheck([{"single": ""}, {"single": "double"}], "single") should return false', function() {
+        expect(truthCheck([{ "single": "" }, { "single": "double" }], "single")).toEqual(false);
+    });
+    it('truthCheck([{"single": "double"}, {"single": undefined}], "single") should return false', function() {
+        expect(truthCheck([{ "single": "double" }, { "single": undefined }], "single")).toEqual(false);
+    });
+    it('truthCheck([{"single": "double"}, {"single": NaN}], "single") should return false', function() {
+        expect(truthCheck([{ "single": "double" }, { "single": NaN }], "single")).toEqual(false);
+    });
+})
