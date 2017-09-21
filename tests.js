@@ -583,6 +583,7 @@ describe("Arguments Optional", function() {
 })
 
 describe("Make a Person", function() {
+    // Not safe to run out of order
     var bob = new Person('Bob Ross');
     it('Object.keys(bob).length should return 6', function() {
         expect(Object.keys(bob).length).toEqual(6);
