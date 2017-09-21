@@ -620,3 +620,12 @@ function dropElements(arr, func) {
     }
     return arr;
 }
+
+/*
+Steamroller
+-----------
+
+ Flatten a nested array. You must account for varying levels of nesting. */
+function steamrollArray(arr) {
+
+}
