@@ -615,5 +615,8 @@ Drop It
  Then return the rest of the array once the condition is satisfied, otherwise, arr
  should be returned as an empty array. */
 function dropElements(arr, func) {
-
+    while (!func(arr[0]) && arr.length > 0) {
+        arr.splice(0, 1);
+    }
+    return arr;
 }
