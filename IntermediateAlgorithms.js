@@ -716,3 +716,32 @@ function addTogether() {
         return arguments[0] + arguments[1];
     }
 }
+
+/*
+Make a Person
+-------------
+
+ Fill in the object constructor with the following methods below:
+
+ getFirstName()
+ getLastName()
+ getFullName()
+ setFirstName(first)
+ setLastName(last)
+ setFullName(firstAndLast)
+ Run the tests to see the expected output for each method.
+
+ The methods that take an argument must accept only one argument and it has to be
+ a string.
+
+ These methods must be the only available means of interacting with the object. */
+var Person = function(firstAndLast) {
+    var name = firstAndLast.split(" ");
+
+    this.getFirstName = () => name[0];
+    this.getLastName = () => name[1];
+    this.getFullName = () => name.join(" ");
+    this.setFirstName = (firstName) => name[0] = firstName;
+    this.setLastName = (lastName) => name[1] = lastName;
+    this.setFullName = (fullName) => name = fullName.split(" ");
+}
