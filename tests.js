@@ -581,3 +581,43 @@ describe("Arguments Optional", function() {
         expect(addTogether(2)([3])).toEqual(undefined);
     });
 })
+
+describe("Make a Person", function() {
+    var bob = new Person('Bob Ross');
+    it('Object.keys(bob).length should return 6', function() {
+        expect(Object.keys(bob).length).toEqual(6);
+    });
+    it('bob instanceof Person should return true', function() {
+        expect(bob instanceof Person).toEqual(true);
+    });
+    it('bob.firstName should return undefined', function() {
+        expect(bob.firstName).toEqual(undefined);
+    });
+    it('bob.lastName should return undefined', function() {
+        expect(bob.lastName).toEqual(undefined);
+    });
+    it('bob.getFirstName() should return "Bob"', function() {
+        expect(bob.getFirstName()).toEqual("Bob");
+    });
+    it('bob.getFullName() should return "Bob Ross"', function() {
+        expect(bob.getFullName()).toEqual("Bob Ross");
+    });
+    it('bob.getFullName() should return "Haskell Ross" after bob.setFirstName("Haskell")', function() {
+        bob.setFirstName("Haskell");
+        expect(bob.getFullName()).toEqual("Haskell Ross");
+    });
+    it('bob.getFullName() should return "Haskell Curry" after bob.setLastName("Curry")', function() {
+        bob.setLastName("Curry");
+        expect(bob.getFullName()).toEqual("Haskell Curry");
+    });
+    it('bob.getFullName() should return "Haskell Curry" after bob.setFullName("Haskell Curry")', function() {
+        bob.setFullName("Haskell Curry");
+        expect(bob.getFullName()).toEqual("Haskell Curry");
+    });
+    it('bob.getFirstName() should return "Haskell" after bob.setFullName("Haskell Curry")', function() {
+        expect(bob.getFirstName()).toEqual("Haskell");
+    });
+    it('bob.getLastName() should return "Curry" after bob.setFullName("Haskell Curry")', function() {
+        expect(bob.getLastName()).toEqual("Curry");
+    });
+})
