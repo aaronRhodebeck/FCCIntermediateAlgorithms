@@ -683,5 +683,10 @@ Everything Be True
 
  Remember, you can access object properties through either dot notation or [] notation. */
 function truthCheck(collection, pre) {
-
+    for (let i = 0, len = collection.length; i < len; i++) {
+        if (!collection[i][pre]) {
+            return false;
+        }
+    }
+    return true;
 }
