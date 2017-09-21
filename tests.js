@@ -563,3 +563,21 @@ describe("Everything Be True", function() {
         expect(truthCheck([{ "single": "double" }, { "single": NaN }], "single")).toEqual(false);
     });
 })
+
+describe("Arguments Optional", function() {
+    it('addTogether(2, 3) should return 5', function() {
+        expect(addTogether(2, 3)).toEqual(5);
+    });
+    it('addTogether(2)(3) should return 5', function() {
+        expect(addTogether(2)(3)).toEqual(5);
+    });
+    it('addTogether("http://bit.ly/IqT6zt") should return undefined', function() {
+        expect(addTogether("http://bit.ly/IqT6zt")).toEqual(undefined);
+    });
+    it('addTogether(2, "3") should return undefined', function() {
+        expect(addTogether(2, "3")).toEqual(undefined);
+    });
+    it('addTogether(2)([3]) should return undefined', function() {
+        expect(addTogether(2)([3])).toEqual(undefined);
+    });
+})
