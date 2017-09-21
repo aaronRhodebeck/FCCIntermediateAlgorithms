@@ -745,3 +745,36 @@ var Person = function(firstAndLast) {
     this.setLastName = (lastName) => name[1] = lastName;
     this.setFullName = (fullName) => name = fullName.split(" ");
 }
+
+/*
+Map the Debris
+--------------
+
+ Return a new array that transforms the elements' average altitude into their orbital
+ periods (in seconds).
+
+ The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
+
+ You can read about orbital periods on Wikipedia.
+
+ The values should be rounded to the nearest whole number. The body being orbited is Earth.
+
+ The radius of the earth is 6367.4447 kilometers, and the GM value of earth is
+ 398600.4418 km3s-2. */
+function orbitalPeriod(arr) {
+    const gmOfEarth = 398600.4418;
+    const radiusOfEarth = 6367.4447;
+
+    var orbitalPeriodArray = [];
+    for (let i = 0, len = arr.length; i < len; i++) {
+        arr[i].orbitalPeriod = findOrbitalPeriod(arr[i].avgAlt);
+        delete arr[i].avgAlt;
+        orbitalPeriodArray.push(arr[i]);
+    }
+    return orbitalPeriodArray;
+
+    function findOrbitalPeriod(averageAltitude) {
+        var radiusOfOrbit = averageAltitude + radiusOfEarth;
+        return Math.round(2 * Math.PI * Math.sqrt(Math.pow(radiusOfOrbit, 3) / gmOfEarth));
+    }
+}
